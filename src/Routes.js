@@ -6,7 +6,7 @@ const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/card-display" exact component={Main} />
+                <Route path="/" exact component={Main} />
             </Switch>
         </BrowserRouter>
     )
