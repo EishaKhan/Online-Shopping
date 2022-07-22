@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
@@ -15,10 +15,8 @@ import {
 } from "@material-ui/core";
 import DetailPage from "./DetailPage";
 import Skeleton from "@material-ui/lab/Skeleton";
-import axios from 'axios';
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Footer from "../Footer/Footer";
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -106,19 +104,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Main() {
+export default function Main({ posts, loading }) {
   const classes = useStyles();
-  const [count, setCount] = useState(false);
-  const [postedData, setPostedData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products`).then((response) => {
-      setPostedData(response.data);
-      setCount(response.data.length)
-      console.log("Data", response.data);
-    })
-  }, []);
 
   const ListSkeleton = ({ listsToRender }) => {
     return (
@@ -140,14 +128,12 @@ export default function Main() {
 
   const sortedDetail = useMemo(() => {
     const searchRegex = searchTerm && new RegExp(`${searchTerm}`, "gi");
-    return postedData.filter(
+    return posts.filter(
       (item) =>
       (!searchRegex ||
         searchRegex.test(item.title))
     );
-  }, [postedData, searchTerm]);
-
-
+  }, [posts, searchTerm]);
 
   return (
     <div>
@@ -177,13 +163,10 @@ export default function Main() {
             {" "}
             Cubedots Shopping
           </Typography>
-          <br />
           <Typography variant={"body1"} align="center" className={classes.text}>
             Top brands for Phones and Electronics. Latest trends in Fashion.
           </Typography>
-          <Typography variant={"subtitle2"} align="center" color="secondary">
-            No of items : {count}
-          </Typography>
+          <br />
           <Box className={classes.formControl}>
             <TextField
               id="outlined-basic"
@@ -239,15 +222,13 @@ export default function Main() {
                 })
               ) : (
                 <>
-                  <ListSkeleton listsToRender={8} />
+                  <ListSkeleton listsToRender={4} />
                 </>
               )}
             </Grid>
           </Box>
         </div>
       </Container>
-      <br />
-      <Footer />
     </div>
   );
 }
