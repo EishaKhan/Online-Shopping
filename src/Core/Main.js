@@ -19,7 +19,6 @@ import axios from 'axios';
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Footer from "../Footer/Footer";
-import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const useStyles = makeStyles((theme) => ({
   background: {
