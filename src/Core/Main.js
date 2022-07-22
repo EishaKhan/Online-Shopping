@@ -247,12 +247,6 @@ export default function Main() {
           </Box>
         </div>
       </Container>
-      <WhatsappShareButton
-        image="https://www.google.com/search?q=whatsappicon+from+react+share&rlz=1C1SQJL_enIN946IN946&sxsrf=ALiCzsZ7YF88m6HrMgW3WVfM6uZhNxdBrw:1658491469935&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiCu7aXuoz5AhWX7XMBHYioBqEQ_AUoAnoECAEQBA&biw=1536&bih=722&dpr=1.25#imgrc=aokRc-QltkMonM"
-        title="Hello There"
-        url="https://www.youtube.com/watch?v=MnkjoXWM7Vk">
-        <WhatsappIcon round={true} size={32}></WhatsappIcon>
-      </WhatsappShareButton>
       <br />
       <Footer />
     </div>
