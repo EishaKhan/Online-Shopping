@@ -62,7 +62,6 @@ export default function DetailPage(props) {
     function handleClickOpen() {
         axios.get(` https://fakestoreapi.com/products/${props.id}`).then((res) => {
             setData(res.data);
-            console.log("MovieData", res.data);
         })
             .catch();
         setOpen(true);

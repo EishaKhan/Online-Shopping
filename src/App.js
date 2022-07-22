@@ -11,7 +11,6 @@ const App = () => {
 
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products`).then((response) => {
-      console.log(response.data)
       setPosts(response.data);
     })
 
